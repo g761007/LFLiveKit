@@ -136,6 +136,9 @@
 }
 
 - (void)captureOutput:(nullable LFVideoCapture *)capture pixelBuffer:(nullable CVPixelBufferRef)pixelBuffer {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(liveSession:cameraSourceDidGetPixelBuffer:)]) {
+        [self.delegate liveSession:self cameraSourceDidGetPixelBuffer:pixelBuffer];
+    }
     if (self.uploading) [self.videoEncoder encodeVideoData:pixelBuffer timeStamp:NOW];
 }
 
