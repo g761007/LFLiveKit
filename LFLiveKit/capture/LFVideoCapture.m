@@ -101,7 +101,7 @@
 
 - (void)setPreView:(UIView *)preView {
     if (self.gpuImageView.superview) [self.gpuImageView removeFromSuperview];
-    [preView insertSubview:self.gpuImageView atIndex:0];
+    [preView addSubview:self.gpuImageView];
     self.gpuImageView.frame = CGRectMake(0, 0, preView.frame.size.width, preView.frame.size.height);
 }
 
